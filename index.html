@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    body{
+        margin: 0px;
+    }
+    #container{
+        width: 100%;
+        height: 950px;
+        background-color: salmon;
+    }
+    #left{
+        width: 50%;         
+        height: 100%;
+        background-color: rgba(37, 206, 150, 0.479);
+        float: left;
+    }
+    #right_top{
+        width: 50%;
+        height: 50%;
+        background-color: cyan;
+        float: right;
+    }
+    #right_bottom{
+        width: 50%;
+        height: 50%;
+        background-color: darkviolet;
+        float:right;
+    }
+
+    #menu {
+        list-style: none;
+        padding-top: 20px;
+    }
+    #menu li{
+        display: inline;
+        font-size: 18px;
+        border: 2px solid #1b1e21;
+    }
+    .no_bullet {
+        list-style:none;
+    }
+    .h_1{
+        color: #dc3545;
+        text-align: center;
+    }
+  </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+</head>
+<body>
+    <div id="container">
+<!--left part        -->
+        <div id="left">
+            <h1 class="h_1">Welcome to beast market</h1>
+            <br/>
+            <ul id="menu">
+                <li onmouseover="cate('frozen')" >Frozen Food</li>
+                <li onmouseover="cate('fresh')">Fresh Food</li>
+                <li onmouseover="cate('beverages')">Beverages</li>
+                <li onmouseover="cate('home')">Home Health</li>
+                <li onmouseover="cate('pet')">Pet Food</li>
+            </ul>
+<!--frozen food-->
+            <ul id="frozen_food" style="display:none;">
+                <li onmousedown="select('1002')" style="margin: 10px">Hamburger Patties</li>
+                <li onmousedown="openLi('fish_fingers')" style="margin: 10px">Fish Fingers[2]
+                    <ul class="no_bullet" id="fish_fingers" style="display:none;">
+                        <li onmousedown="select('1000');">500 Gram</li>
+                        <li onmousedown="select('1001');">1000 Gram</li>
+                    </ul>
+                </li>
+                <li onmousedown="select('1003')" style="margin: 10px">Shelled Prawns</li>
+                <li onmousedown="openLi('ice_cream')" style="margin: 10px">Tub Ice Cream[2]
+                    <ul class="no_bullet" style="display: none" id="ice_cream">
+                        <li onmousedown="select('1004')">1 Litre</li>
+                        <li onmousedown="select('1005')">2 Litre</li>
+                    </ul>
+                </li>
+              </ul>
+<!--fresh food-->
+              <ul id="fresh_food" style="display:none;" >
+                <li onmousedown="select('3002')" style="margin: 10px">T'Bone Steak</li>
+                <li onmousedown="openLi('cheddar_chees')" style="margin: 10px">Cheddar Chees[2]
+                    <ul class="no_bullet" style="display: none" id="cheddar_chees" >
+                        <li onmousedown="select('3000')">500 Gram</li>
+                        <li onmousedown="select('3001')">1000 Gram</li>
+                    </ul>
+                </li>
+                <li onmousedown="select('3003')" style="margin: 10px">Navel Oranges</li>
+                <li onmousedown="select('3004')" style="margin: 10px">Bananas</li>
+                <li onmousedown="select('3006')" style="margin: 10px">Graps</li>
+                <li onmousedown="select('3007')" style="margin: 10px">Apples</li>
+                <li onmousedown="select('3005')" style="margin: 10px">Peaches</li>
+              </ul>
+<!--beverages-->
+              <ul id="beverages" style="display:none;">
+                <li onmousedown="openLi('coffee')" style="margin: 10px">Coffee[2]
+                    <ul class="no_bullet" style="display: none" id="coffee">
+                        <li onmousedown="select('4003')">200 Gram</li>
+                        <li onmousedown="select('4004')">500 Gram</li>
+                    </ul>
+                </li>
+                <li onmousedown="openLi('tea_bags')" style="margin: 10px">Earl Grey Tea Bags[3]
+                    <ul class="no_bullet" style="display: none" id="tea_bags">
+                        <li  onmousedown="select('4000')">Pack 25</li>
+                        <li  onmousedown="select('4001')">Pack 100</li>
+                        <li  onmousedown="select('4002')">Pack 200</li>
+                    </ul>
+                </li>
+                <li onmousedown="select('4005')" style="margin: 10px">Chocolate Bar</li>
+              </ul>
+<!--home health-->
+              <ul id="home_health" style="display: none">
+                  <li onmousedown="select('2002')" style="margin: 10px">Bath Soap</li>
+                  <li onmousedown="openLi('panadol')" style="margin: 10px">Panadol[2]
+                      <ul class="no_bullet" style="display: none" id="panadol">
+                          <li onmousedown="select('2000')">Pack 24</li>
+                          <li onmousedown="select('2001')">Bottle 50</li>
+                      </ul>
+                  </li>
+                  <li onmousedown="select('2005')" style="margin: 10px">Washing Powder</li>
+                  <li onmousedown="openLi('garbage')" style="margin: 10px">Garbage Bags[2]
+                      <ul class="no_bullet" style="display: none" id="garbage">
+                          <li onmousedown="select('2003')">small(pack 10)</li>
+                          <li onmousedown="select('2004')">large(pack 50)</li>
+                      </ul>
+                  </li>
+                  <li onmousedown="select('2006')" style="margin: 10px">Laundry Bleach</li>
+              </ul>
+<!--pet food-->
+              <ul id="pet_food" style="display:none;">
+                <li onmousedown="select('5002')" style="margin: 10px">Bird Food</li>
+                <li onmousedown="select('5003')" style="margin: 10px">Cat Food</li>
+                <li onmousedown="openLi('dog_food')" style="margin: 10px">Dry Dog Food[2]
+                    <ul class="no_bullet" style="display: none" id="dog_food">
+                        <li onmousedown="select('5001')">1 kg.Pack</li>
+                        <li onmousedown="select('5000')">5 kg.pack</li>
+                    </ul>
+                </li>
+                <li onmousedown="select('5004')" style="margin: 10px">Fish Food</li>
+              </ul>
+              <script>
+                function cate(selection){
+                    if(selection == "frozen"){
+                        $("#frozen_food").show();
+                        $("#fresh_food").hide();
+                        $("#beverages").hide();
+                        $("#home_health").hide();
+                        $("#pet_food").hide();
+                    }
+                    else if (selection == "fresh"){
+                        $("#frozen_food").hide();
+                        $("#fresh_food").show();
+                        $("#beverages").hide();
+                        $("#home_health").hide();
+                        $("#pet_food").hide();
+                    }
+                    else if (selection == "beverages"){
+                        $("#frozen_food").hide();
+                        $("#fresh_food").hide();
+                        $("#beverages").show();
+                        $("#home_health").hide();
+                        $("#pet_food").hide();
+                    }
+                    else if (selection == "home"){
+                        $("#frozen_food").hide();
+                        $("#fresh_food").hide();
+                        $("#beverages").hide();
+                        $("#home_health").show();
+                        $("#pet_food").hide();
+                    }
+                    else {
+                        $("#frozen_food").hide();
+                        $("#fresh_food").hide();
+                        $("#beverages").hide();
+                        $("#home_health").hide();
+                        $("#pet_food").show();
+                    }
+                }
+
+                function openLi(x){
+                    $("#" + x).toggle();
+                }
+              </script>
+        </div>
+        <!--Right top-->
+        <div id="right_top" style="overflow: auto"></div>
+        <!--Right bottom-->
+        <div id="right_bottom" style="overflow: auto"></div>
+    </div>
+<script>
+    function select(sel){
+        $.ajax({
+            url: "righttop.php",
+            data: {productid: sel},
+            type: "GET",
+            context: document.body,
+        }).done(function (response){
+            $("#right_top").html(response);
+        });
+    }
+</script>
+</body>
+</html>
